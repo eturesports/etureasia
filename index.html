@@ -284,9 +284,64 @@ ul.dash li b { font-weight:600; color:var(--w); }
 }
 ::-webkit-scrollbar { width:6px; height:6px; }
 ::-webkit-scrollbar-thumb { background:rgba(196,43,43,.4); border-radius:3px; }
+
+/* ---------- Password gate ---------- */
+#gate { position:fixed; inset:0; z-index:9999; background:var(--dk);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0; }
+#gate .g-logo { margin-bottom:clamp(32px,5vh,56px); opacity:.9; }
+#gate .g-logo img { height:clamp(28px,3vw,40px); }
+#gate .g-title { font-family:var(--disp); font-weight:900; font-size:clamp(28px,4vw,52px);
+  text-transform:uppercase; color:var(--w); letter-spacing:.01em; line-height:.95; text-align:center; margin-bottom:clamp(6px,1.2vh,12px); }
+#gate .g-title span { color:var(--red-l); }
+#gate .g-sub { font-family:'Barlow Condensed'; font-size:clamp(11px,1vw,13px); letter-spacing:.28em;
+  text-transform:uppercase; color:var(--g2); margin-bottom:clamp(32px,5vh,52px); }
+#gate .g-field { position:relative; width:clamp(260px,28vw,380px); }
+#gate .g-field input { width:100%; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14);
+  border-radius:6px; padding:14px 48px 14px 18px; font-family:'Barlow Condensed'; font-size:15px;
+  letter-spacing:.12em; color:var(--w); outline:none; transition:border-color .25s; }
+#gate .g-field input::placeholder { color:var(--g2); letter-spacing:.18em; }
+#gate .g-field input:focus { border-color:rgba(196,43,43,.6); }
+#gate .g-field button { position:absolute; right:0; top:0; bottom:0; width:48px;
+  background:none; border:0; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+#gate .g-field button svg { width:18px; height:18px; stroke:var(--g2); transition:stroke .2s; }
+#gate .g-field button:hover svg { stroke:var(--red-l); }
+#gate .g-err { font-family:'Barlow Condensed'; font-size:12px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--red-l); margin-top:10px; opacity:0; transition:opacity .3s; text-align:center; }
+#gate .g-err.show { opacity:1; }
+#gate .g-line { width:clamp(260px,28vw,380px); height:1px; background:rgba(255,255,255,.07); margin:clamp(28px,4vh,44px) 0; }
+#gate .g-conf { font-family:'Barlow Condensed'; font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--g3); }
 </style>
 </head>
 <body>
+<div id="gate">
+  <div class="g-logo"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjM2IiB2aWV3Qm94PSIwIDAgMTIwIDM2IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0wIDBoMTIwdjM2SDB6IiBmaWxsPSJub25lIi8+PHRleHQgeD0iNjAiIHk9IjI2IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSI0Ij5FVFVSRSBTUE9SVFM8L3RleHQ+PC9zdmc+" alt="ETURE Sports"></div>
+  <h1 class="g-title">ETURE <span>ASIA</span></h1>
+  <p class="g-sub">Confidential · Access Required</p>
+  <div class="g-field">
+    <input type="password" id="gateInput" placeholder="ACCESS CODE" autocomplete="off" autofocus>
+    <button onclick="gateCheck()" tabindex="-1">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </div>
+  <p class="g-err" id="gateErr">Incorrect access code</p>
+  <div class="g-line"></div>
+  <p class="g-conf">ETURE Sports · Confidential Document</p>
+</div>
+<script>
+(function(){
+  const k='eture_asia_auth';
+  if(sessionStorage.getItem(k)==='1'){document.getElementById('gate').style.display='none';return;}
+  document.getElementById('gateInput').addEventListener('keydown',e=>{if(e.key==='Enter')gateCheck();});
+})();
+function gateCheck(){
+  const v=document.getElementById('gateInput').value.trim().toLowerCase();
+  if(v==='etureasia'){sessionStorage.setItem('eture_asia_auth','1');document.getElementById('gate').style.display='none';}
+  else{const e=document.getElementById('gateErr');e.classList.add('show');document.getElementById('gateInput').value='';setTimeout(()=>e.classList.remove('show'),2500);}
+}
+</script>
 <div class="progress" id="progress"></div>
 <div class="deck" id="deck">
 <section class="slide " style="background:var(--dk);">
