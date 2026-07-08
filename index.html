@@ -1445,7 +1445,7 @@ function dAnim(el,t){ if(el.dataset.done)return; el.dataset.done='1';
 const CTR = {
   5:  [{id:'n-com',t:800,suf:'+'},{id:'n-sch',t:50,pre:'$',suf:',000,000+'},{id:'n-d1',t:331,suf:'+'}],
   11: [{id:'d-any',t:98,donut:1},{id:'d-d1',t:70,donut:1},{id:'d-d2',t:20,donut:1},{id:'d-d3',t:5,donut:1}],
-  28: [{id:'r-pl',t:350,suf:'+'},{id:'r-na',t:15,suf:'+'},{id:'r-se',t:50,suf:'+'},{id:'r-pr',t:25,suf:''}]
+  27: [{id:'r-pl',t:350,suf:'+'},{id:'r-na',t:15,suf:'+'},{id:'r-se',t:50,suf:'+'},{id:'r-pr',t:25,suf:''}]
 };
 function fire(i){ const s=CTR[i]; if(!s)return;
   s.forEach(c=>{ const el=document.getElementById(c.id); if(!el)return;
