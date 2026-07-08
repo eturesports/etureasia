@@ -645,11 +645,18 @@ function gateCheck(){
     </div>
   </div>
 </section>
-<section class="slide lt" style="background:var(--ow);">
-  <div class="rail lt"><span>Program success rate</span></div>
-  <div class="pad scroll has-rail lt" style="display:flex;flex-direction:column;justify-content:center;">
-    <p class="kick dkk">What is the success rate of the program?</p>
-    <h2 class="h-display on-lt">College Placement<br><span class="rd">Statistics</span></h2>
+<section class="slide " style="background:var(--dk);">
+  <div style="position:absolute;inset:0;"><img src="assets/moha_seye.jpg" alt="Moha Seye" style="width:100%;height:100%;object-fit:cover;opacity:0.35;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,9,8,.85) 40%,rgba(11,9,8,.4) 100%);"></div>
+  <div style="position:absolute;top:clamp(36px,4.5vw,60px);right:clamp(32px,7vw,96px);z-index:10;text-align:right;">
+    <p style="font-family:'Barlow Condensed';font-size:clamp(10px,1.1vw,13px);font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--red-l);margin-bottom:.3rem;">Alumni · Talent Identification Dep.</p>
+    <p style="font-family:NeuePower,'Barlow Condensed';font-weight:900;font-size:clamp(18px,2.2vw,30px);text-transform:uppercase;color:#fff;line-height:.95;">Moha Seye</p>
+    <p style="font-family:'Barlow Condensed';font-size:clamp(10px,1vw,12px);font-weight:400;color:rgba(255,255,255,0.6);margin-top:.3rem;">Alumni de ETURE y miembro del<br>departamento de Talent Identification Dep.</p>
+  </div>
+  <div class="rail"><span>Program success rate</span></div>
+  <div class="pad scroll has-rail" style="display:flex;flex-direction:column;justify-content:center;">
+    <p class="kick">What is the success rate of the program?</p>
+    <h2 class="h-display">College Placement<br><span class="rd">Statistics</span></h2>
     <div class="g4" style="margin-top:1.2rem;">
       <div style="text-align:center;"><div class="donut" id="d-any"><span class="donut-val">0%</span></div>
         <p class="bignum-lb" style="margin:0.8rem auto 0;text-align:center;">Any Division Placement Rate</p></div>
@@ -1363,7 +1370,7 @@ document.querySelectorAll('[data-img]').forEach(el=>{
 });
 
 const TOTAL = 38;
-const LIGHT = [1, 4, 6, 9, 11, 15, 17, 19, 22, 24, 26, 29, 31, 34, 36];
+const LIGHT = [1, 4, 6, 9, 15, 17, 19, 22, 24, 26, 29, 31, 34, 36];
 const NAMES = ["ETURE Asia", "Executive Overview", "The Premium Hub", "Person First, Athlete Second", "What Exactly Is ETURE?", "Track Record in Europe", "What Sets ETURE Apart", "Direct Student Benefits", "The Professional Pathway", "Age Categories & Programs", "Academic & Athletic Pathway", "College Placement Statistics", "Endless Possibilities", "Value for Institutional Partners", "3. Additional Information", "History & Track Record of ETURE", "Philosophy & Methodology", "Organization & Structure", "Academic Programs", "Program Duration & Languages", "Athletic Program & Planning", "Coaching, Care & Performance", "Facilities", "Financial Information — Pricing", "Included Services — All Inclusive", "Scholarships / Grants & Admission", "Agreements & Partnerships", "Results & Success Stories", "Player Testimonials", "A. Academic Pathways", "B. The Athletic Blueprint", "C. Financial Packages & Inclusions", "D. Scholarships and Financial Aid", "4. Key Success Metrics", "5. Marketing & Media Toolkit", "6. Closing the Deal", "7. Overcoming Objections", "8. Conclusion & Call to Action"];
 let cur = 0;
 const deck=document.getElementById('deck'), prevBtn=document.getElementById('prevBtn'),
