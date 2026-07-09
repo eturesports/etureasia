@@ -1099,38 +1099,7 @@ function gateCheck(){
           <li>Two turf fields at Vinaros CF training complex and 3 natural grass fields</li>
           <li>VEO Camera 2 recording and live streaming</li>
           <li>Friendly matches with ETURE MSOC</li></ul></div>
-        <div id="camposCarousel" style="border-radius:8px;overflow:hidden;position:relative;aspect-ratio:4/3;">
-          <div id="camposTrack" style="display:flex;height:100%;transition:transform .4s ease;">
-            <video src="assets/campos_v01.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
-            <video src="assets/campos_v02.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
-            <video src="assets/campos_v03.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
-            <video src="assets/campos_v04.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
-            <video src="assets/campos_v05.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
-            <video src="assets/campos_v06.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
-            <video src="assets/campos_v07.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
-            <video src="assets/campos_v08.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
-            <img src="assets/campos_01.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
-            <img src="assets/campos_02.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
-            <img src="assets/campos_03.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
-            <img src="assets/campos_04.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
-            <img src="assets/campos_05.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
-          </div>
-          <button onclick="camposGo(-1);event.stopPropagation()" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:#fff;border:0;border-radius:50%;width:30px;height:30px;font-size:18px;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center;line-height:1;">&#8249;</button>
-          <button onclick="camposGo(1);event.stopPropagation()" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:#fff;border:0;border-radius:50%;width:30px;height:30px;font-size:18px;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center;line-height:1;">&#8250;</button>
-          <div id="camposDots" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:2;"></div>
-        </div>
-        <script>(()=>{
-          let ci=0;const CT=13,track=document.getElementById('camposTrack'),dots=document.getElementById('camposDots');
-          const items=[...track.children];
-          for(let i=0;i<CT;i++){const d=document.createElement('span');d.style.cssText='width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;display:inline-block;transition:background .2s;';d.onclick=(e)=>{e.stopPropagation();ci=i;upd();};dots.appendChild(d);}
-          function upd(){
-            track.style.transform=`translateX(-${ci*100}%)`;
-            [...dots.children].forEach((d,i)=>d.style.background=i===ci?'#C42B2B':'rgba(255,255,255,.45)');
-            items.forEach((el,i)=>{if(el.tagName==='VIDEO'){i===ci?el.play():el.pause();}});
-          }
-          window.camposGo=function(d){ci=(ci+d+CT)%CT;upd();}
-          upd();
-        })();</script>
+        <img src="assets/diapositiva_25.png" style="border-radius:8px;width:100%;aspect-ratio:4/3;object-fit:cover;">
       </div></div>
       <div class="tab-pane"><p class="lbl" style="color:var(--red);">Spanish Competition Program (SCP)</p>
         <ul class="dash" style="margin-top:.8rem;max-width:760px;">
@@ -1159,6 +1128,51 @@ function gateCheck(){
           <li>Outcome not guaranteed</li></ul></div>
     </div>
   </div>
+</section>
+<section class="slide " style="background:var(--dk);">
+  <div class="pad" style="display:flex;flex-direction:column;height:100%;padding-bottom:clamp(24px,3vh,40px);">
+    <p class="kick" style="margin-bottom:.6rem;">ETURE FC</p>
+    <h2 class="h-display" style="font-size:clamp(26px,3.8vw,54px);margin:0 0 .5rem;">Training <span class="rd">Complex</span></h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem;">
+      <span style="background:rgba(196,43,43,.18);border:1px solid rgba(196,43,43,.4);color:#fff;border-radius:4px;padding:4px 12px;font-size:clamp(11px,1.1vw,14px);font-family:var(--ff-ui);">Toros Home</span>
+      <span style="background:rgba(196,43,43,.18);border:1px solid rgba(196,43,43,.4);color:#fff;border-radius:4px;padding:4px 12px;font-size:clamp(11px,1.1vw,14px);font-family:var(--ff-ui);">4 Grass Fields</span>
+      <span style="background:rgba(196,43,43,.18);border:1px solid rgba(196,43,43,.4);color:#fff;border-radius:4px;padding:4px 12px;font-size:clamp(11px,1.1vw,14px);font-family:var(--ff-ui);">Student-Athlete</span>
+      <span style="background:rgba(196,43,43,.18);border:1px solid rgba(196,43,43,.4);color:#fff;border-radius:4px;padding:4px 12px;font-size:clamp(11px,1.1vw,14px);font-family:var(--ff-ui);">Panorámica Golf Course</span>
+      <span style="background:rgba(196,43,43,.18);border:1px solid rgba(196,43,43,.4);color:#fff;border-radius:4px;padding:4px 12px;font-size:clamp(11px,1.1vw,14px);font-family:var(--ff-ui);">Ready for 2027/2028 Season</span>
+    </div>
+    <div id="camposCarousel" style="border-radius:8px;overflow:hidden;position:relative;flex:1;min-height:0;">
+      <div id="camposTrack" style="display:flex;height:100%;transition:transform .4s ease;">
+        <video src="assets/campos_v01.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
+        <video src="assets/campos_v02.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
+        <video src="assets/campos_v03.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
+        <video src="assets/campos_v04.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
+        <video src="assets/campos_v05.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
+        <video src="assets/campos_v06.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
+        <video src="assets/campos_v07.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
+        <video src="assets/campos_v08.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
+        <img src="assets/campos_01.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
+        <img src="assets/campos_02.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
+        <img src="assets/campos_03.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
+        <img src="assets/campos_04.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
+        <img src="assets/campos_05.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
+      </div>
+      <button onclick="camposGo(-1);event.stopPropagation()" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:#fff;border:0;border-radius:50%;width:36px;height:36px;font-size:22px;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center;line-height:1;">&#8249;</button>
+      <button onclick="camposGo(1);event.stopPropagation()" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:#fff;border:0;border-radius:50%;width:36px;height:36px;font-size:22px;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center;line-height:1;">&#8250;</button>
+      <div id="camposDots" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:2;"></div>
+    </div>
+  </div>
+  <script>(()=>{
+    let ci=0;const CT=13,track=document.getElementById('camposTrack'),dots=document.getElementById('camposDots');
+    const items=[...track.children];
+    for(let i=0;i<CT;i++){const d=document.createElement('span');d.style.cssText='width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;display:inline-block;transition:background .2s;';d.onclick=(e)=>{e.stopPropagation();ci=i;upd();};dots.appendChild(d);}
+    function upd(){
+      track.style.transform=`translateX(-${ci*100}%)`;
+      [...dots.children].forEach((d,i)=>d.style.background=i===ci?'#C42B2B':'rgba(255,255,255,.45)');
+      items.forEach((el,i)=>{if(el.tagName==='VIDEO'){i===ci?el.play():el.pause();}});
+    }
+    window.camposGo=function(d){ci=(ci+d+CT)%CT;upd();}
+    upd();
+  })();</script>
 </section>
 <section class="slide " style="background:var(--dk3);">
   <div class="rail"><span>Scholarships / Grants</span></div>
