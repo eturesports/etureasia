@@ -1428,6 +1428,8 @@ function go(d){ cur=Math.min(TOTAL-1,Math.max(0,cur+d)); render(); }
     scrubFill.style.transition='none';
     scrubHandle.style.left=(pct*100)+'%';
     scrubFill.style.width=(pct*100)+'%';
+    cnt.textContent=pad(Math.round(pct*(TOTAL-1))+1)+' / '+pad(TOTAL);
+    sect.textContent=NAMES[Math.round(pct*(TOTAL-1))]||'';
   }
   function commit(){
     dragging=false; scrub.classList.remove('dragging');
@@ -1443,26 +1445,10 @@ function go(d){ cur=Math.min(TOTAL-1,Math.max(0,cur+d)); render(); }
   scrub.addEventListener('touchend',()=>{if(dragging)commit();});
 })();
 document.addEventListener('keydown',e=>{ if(e.key==='ArrowRight')go(1); if(e.key==='ArrowLeft')go(-1); });
-let tx=null, draggingDeck=false;
-document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX; draggingDeck=false;},{passive:true});
-document.addEventListener('touchmove',e=>{
-  if(tx===null)return;
-  const dx=e.touches[0].clientX-tx;
-  if(!draggingDeck && Math.abs(dx)<8)return;
-  draggingDeck=true;
-  const base=-cur*100;
-  const pct=(dx/window.innerWidth)*100;
-  const clamped=Math.max(Math.min(pct,100),-100);
-  deck.style.transition='none';
-  deck.style.transform=`translateX(calc(${base}vw + ${clamped}vw))`;
-},{passive:true});
-document.addEventListener('touchend',e=>{
-  if(tx===null)return;
-  const dx=e.changedTouches[0].clientX-tx;
-  deck.style.transition='';
-  if(Math.abs(dx)>55) go(dx<0?1:-1); else render();
-  tx=null; draggingDeck=false;
-},{passive:true});
+let tx=null;
+document.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+document.addEventListener('touchend',e=>{ if(tx===null)return;
+  const dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)>55)go(dx<0?1:-1); tx=null; },{passive:true});
 
 /* counters + donuts */
 function cAnim(el,t,pre='',suf=''){ if(el.dataset.done)return; el.dataset.done='1';
