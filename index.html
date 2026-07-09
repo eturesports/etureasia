@@ -220,7 +220,7 @@ ul.dash li b { font-weight:600; color:var(--w); }
 /* ---------- Map ---------- */
 .map-wrap { position:relative; width:100%; max-width:1020px; aspect-ratio:16/9; margin:0 auto; border-radius:12px; overflow:hidden;
   background:rgba(255,255,255,.03); border:1px solid var(--line-d); }
-.map-wrap img { width:100%; height:100%; object-fit:cover; object-position:center center; display:block; filter:grayscale(1) blur(0.6px) invert(1) brightness(1.15) contrast(1.2); }
+.map-wrap img { width:100%; height:100%; object-fit:cover; object-position:center center; display:block; filter:grayscale(1) invert(1) brightness(1.15) contrast(1.2); }
 .pin { position:absolute; width:9px; height:9px; border-radius:50%; background:var(--red-l);
   transform:translate(-50%,-50%); cursor:pointer; animation:pulse 2.4s infinite; }
 .pin::after { content:attr(data-name); position:absolute; bottom:13px; left:50%; transform:translateX(-50%);
@@ -1109,26 +1109,53 @@ function gateCheck(){
       <img src="assets/world_map.png" alt="World map, ETURE nationalities" loading="lazy">
       <!-- pins: viewBox ajustado al crop 16:9 sobre imagen 2:1 (62.5 unidades por lado) -->
       <svg style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;" viewBox="62.5 0 875 500" xmlns="http://www.w3.org/2000/svg">
-        <style>.mp:hover .ml{opacity:1}.ml{opacity:0;transition:opacity .2s;pointer-events:none;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase}</style>
-        <g class="mp"><circle cx="231" cy="144" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="237" y="140" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">USA</text></g>
-        <g class="mp"><circle cx="490" cy="138" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="496" y="134" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Spain</text></g>
-        <g class="mp"><circle cx="292" cy="83" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="298" y="79" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Canada</text></g>
-        <g class="mp"><circle cx="294" cy="237" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="300" y="233" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Colombia</text></g>
-        <g class="mp"><circle cx="225" cy="196" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="231" y="192" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Mexico</text></g>
-        <g class="mp"><circle cx="274" cy="196" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="280" y="192" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Cayman Is.</text></g>
-        <g class="mp"><circle cx="524" cy="118" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="530" y="114" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Switzerland</text></g>
-        <g class="mp"><circle cx="507" cy="114" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="513" y="110" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">France</text></g>
-        <g class="mp"><circle cx="888" cy="151" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="872" y="147" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke" text-anchor="end">Japan</text></g>
-        <g class="mp"><circle cx="314" cy="221" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="320" y="217" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Venezuela</text></g>
-        <g class="mp"><circle cx="278" cy="227" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="284" y="223" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Panama</text></g>
-        <g class="mp"><circle cx="306" cy="199" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="312" y="195" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">R. Dominican</text></g>
-        <g class="mp"><circle cx="500" cy="107" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="506" y="103" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">England</text></g>
-        <g class="mp"><circle cx="537" cy="104" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="543" y="100" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Germany</text></g>
-        <g class="mp"><circle cx="452" cy="209" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="458" y="205" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Senegal</text></g>
-        <g class="mp"><circle cx="499" cy="234" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="505" y="230" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Ghana</text></g>
-        <g class="mp"><circle cx="602" cy="254" r="5.5" fill="#C42B2B" style="cursor:pointer"/><text class="ml" x="608" y="250" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Kenya</text></g>
+        <style>
+          .mp circle{cursor:pointer;transition:r .15s}
+          .mp:hover circle{r:7}
+          .mp .ml{opacity:0;transition:opacity .2s;pointer-events:none;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+          .mp:hover .ml{opacity:1}
+        </style>
+        <g id="pins">
+          <g class="mp" data-i="0"><circle cx="231" cy="144" r="5.5" fill="#C42B2B"/></g>
+          <g class="mp" data-i="1"><circle cx="490" cy="138" r="5.5" fill="#C42B2B"/></g>
+          <g class="mp" data-i="2"><circle cx="292" cy="83" r="5.5" fill="#C42B2B"/></g>
+          <g class="mp" data-i="3"><circle cx="294" cy="237" r="5.5" fill="#C42B2B"/></g>
+          <g class="mp" data-i="4"><circle cx="225" cy="196" r="5.5" fill="#C42B2B"/></g>
+          <g class="mp" data-i="5"><circle cx="274" cy="196" r="5.5" fill="#C42B2B"/></g>
+          <g class="mp" data-i="6"><circle cx="524" cy="118" r="5.5" fill="#C42B2B"/></g>
+          <g class="mp" data-i="7"><circle cx="507" cy="114" r="5.5" fill="#C42B2B"/></g>
+          <g class="mp" data-i="8"><circle cx="888" cy="151" r="5.5" fill="#C42B2B"/></g>
+          <g class="mp" data-i="9"><circle cx="314" cy="221" r="5.5" fill="#C42B2B"/></g>
+          <g class="mp" data-i="10"><circle cx="278" cy="227" r="5.5" fill="#C42B2B"/></g>
+          <g class="mp" data-i="11"><circle cx="306" cy="199" r="5.5" fill="#C42B2B"/></g>
+          <g class="mp" data-i="12"><circle cx="500" cy="107" r="5.5" fill="#C42B2B"/></g>
+          <g class="mp" data-i="13"><circle cx="537" cy="104" r="5.5" fill="#C42B2B"/></g>
+          <g class="mp" data-i="14"><circle cx="452" cy="209" r="5.5" fill="#C42B2B"/></g>
+          <g class="mp" data-i="15"><circle cx="499" cy="234" r="5.5" fill="#C42B2B"/></g>
+          <g class="mp" data-i="16"><circle cx="602" cy="254" r="5.5" fill="#C42B2B"/></g>
+        </g>
+        <g id="labels">
+          <text class="ml" x="237" y="140" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">USA</text>
+          <text class="ml" x="496" y="134" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Spain</text>
+          <text class="ml" x="298" y="79" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Canada</text>
+          <text class="ml" x="300" y="233" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Colombia</text>
+          <text class="ml" x="231" y="192" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Mexico</text>
+          <text class="ml" x="280" y="192" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Cayman Is.</text>
+          <text class="ml" x="530" y="114" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Switzerland</text>
+          <text class="ml" x="513" y="110" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">France</text>
+          <text class="ml" x="872" y="147" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke" text-anchor="end">Japan</text>
+          <text class="ml" x="320" y="217" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Venezuela</text>
+          <text class="ml" x="284" y="223" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Panama</text>
+          <text class="ml" x="312" y="195" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">R. Dominican</text>
+          <text class="ml" x="506" y="103" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">England</text>
+          <text class="ml" x="543" y="100" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Germany</text>
+          <text class="ml" x="458" y="205" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Senegal</text>
+          <text class="ml" x="505" y="230" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Ghana</text>
+          <text class="ml" x="608" y="250" fill="#fff" stroke="#000" stroke-width="3" paint-order="stroke">Kenya</text>
+        </g>
       </svg>
     </div>
+    <script>(()=>{const pins=[...document.querySelectorAll('#pins .mp')],lbls=[...document.querySelectorAll('#labels .ml')];pins.forEach((p,i)=>{p.addEventListener('mouseenter',()=>lbls[i]&&(lbls[i].style.opacity=1));p.addEventListener('mouseleave',()=>lbls[i]&&(lbls[i].style.opacity=0));});})()</script>
     <div class="g3" style="margin-top:1rem;">
       <p class="body small"><b>Players signed by clubs:</b> many semiprofessional clubs work with ETURE.</p>
       <p class="body small"><b>Scholarships secured at United States universities:</b> over $50,000,000, more than 500 players.</p>
