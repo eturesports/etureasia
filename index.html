@@ -1101,6 +1101,14 @@ function gateCheck(){
           <li>Friendly matches with ETURE MSOC</li></ul></div>
         <div id="camposCarousel" style="border-radius:8px;overflow:hidden;position:relative;aspect-ratio:4/3;">
           <div id="camposTrack" style="display:flex;height:100%;transition:transform .4s ease;">
+            <video src="assets/campos_v01.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
+            <video src="assets/campos_v02.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
+            <video src="assets/campos_v03.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
+            <video src="assets/campos_v04.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
+            <video src="assets/campos_v05.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
+            <video src="assets/campos_v06.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
+            <video src="assets/campos_v07.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
+            <video src="assets/campos_v08.mp4" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;" muted playsinline loop></video>
             <img src="assets/campos_01.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
             <img src="assets/campos_02.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
             <img src="assets/campos_03.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
@@ -1112,9 +1120,14 @@ function gateCheck(){
           <div id="camposDots" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:2;"></div>
         </div>
         <script>(()=>{
-          let ci=0;const CT=5,track=document.getElementById('camposTrack'),dots=document.getElementById('camposDots');
+          let ci=0;const CT=13,track=document.getElementById('camposTrack'),dots=document.getElementById('camposDots');
+          const items=[...track.children];
           for(let i=0;i<CT;i++){const d=document.createElement('span');d.style.cssText='width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;display:inline-block;transition:background .2s;';d.onclick=(e)=>{e.stopPropagation();ci=i;upd();};dots.appendChild(d);}
-          function upd(){track.style.transform=`translateX(-${ci*100}%)`;[...dots.children].forEach((d,i)=>d.style.background=i===ci?'#C42B2B':'rgba(255,255,255,.45)');}
+          function upd(){
+            track.style.transform=`translateX(-${ci*100}%)`;
+            [...dots.children].forEach((d,i)=>d.style.background=i===ci?'#C42B2B':'rgba(255,255,255,.45)');
+            items.forEach((el,i)=>{if(el.tagName==='VIDEO'){i===ci?el.play():el.pause();}});
+          }
           window.camposGo=function(d){ci=(ci+d+CT)%CT;upd();}
           upd();
         })();</script>
