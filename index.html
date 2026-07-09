@@ -1472,12 +1472,15 @@ function go(d){ cur=Math.min(TOTAL-1,Math.max(0,cur+d)); render(); }
 })();
 document.addEventListener('keydown',e=>{ if(e.key==='ArrowRight')go(1); if(e.key==='ArrowLeft')go(-1); });
 let tx=null,ty=null,tLock=null;
-document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;tLock=null;},{passive:true});
+document.addEventListener('touchstart',e=>{
+  if(e.target.closest('#scrub,#prevBtn,#nextBtn'))return;
+  tx=e.touches[0].clientX;ty=e.touches[0].clientY;tLock=null;
+},{passive:true});
 document.addEventListener('touchmove',e=>{
   if(tx===null)return;
-  const dx=Math.abs(e.touches[0].clientX-tx), dy=Math.abs(e.touches[0].clientY-ty);
-  if(tLock===null) tLock=dx>dy?'h':'v';
-  if(tLock==='h') e.preventDefault();
+  const dx=Math.abs(e.touches[0].clientX-tx),dy=Math.abs(e.touches[0].clientY-ty);
+  if(tLock===null&&(dx>8||dy>8))tLock=dx>dy?'h':'v';
+  if(tLock==='h')e.preventDefault();
 },{passive:false});
 document.addEventListener('touchend',e=>{
   if(tx===null)return;
