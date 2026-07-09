@@ -268,16 +268,38 @@ ul.dash li b { font-weight:600; color:var(--w); }
 
 /* ---------- Responsive ---------- */
 @media (max-width:860px){
+  .deck { touch-action:pan-y; }
   .g2,.g3,.g4,.g23,.g32 { grid-template-columns:1fr; }
-  .split { grid-template-columns:1fr; grid-template-rows:auto 1fr; }
-  .split .pad { padding-top:clamp(20px,4vh,36px); padding-bottom:clamp(20px,4vh,36px); }
+  .split { grid-template-columns:1fr !important; }
+  .split .photo, .split .img-slot { max-height:30vh; }
+  .split .photo img, .split .img-slot img { width:100%; height:100%; object-fit:cover; }
   .stripes { grid-template-columns:1fr; height:auto; min-height:100%; }
   .stripe { padding:clamp(16px,3vh,24px) clamp(18px,5vw,28px); border-left:0; border-top:1px solid var(--line-d); }
   .stair { grid-template-columns:1fr; align-items:stretch; }
   .stair .step:nth-child(2),.stair .step:nth-child(3){ margin-bottom:0; }
-  .rail { display:none; } .has-rail { padding-left:clamp(24px,6.5vw,96px) !important; }
+  .rail { display:none; } .has-rail { padding-left:clamp(20px,5.5vw,32px) !important; }
   .hud .sect { display:none; }
-  .pad { padding:clamp(64px,9vh,80px) clamp(20px,5.5vw,32px); }
+  .hud .cnt { font-size:11px; }
+  .pad { padding:clamp(56px,8vh,72px) clamp(20px,5.5vw,28px) clamp(24px,4vh,40px); }
+  .h-display { font-size:clamp(28px,7vw,48px) !important; }
+  .statement .h-display { font-size:clamp(30px,8vw,54px) !important; }
+  .body { font-size:clamp(13px,3.4vw,15px); }
+  .bignum { font-size:clamp(28px,9vw,52px) !important; }
+  .bignum-lb { font-size:clamp(10px,2.5vw,12px); }
+  .donut { width:clamp(72px,18vw,100px) !important; height:clamp(72px,18vw,100px) !important; }
+  .donut-val { font-size:clamp(14px,3.5vw,20px) !important; }
+  .g4 { gap:clamp(8px,2vw,14px); }
+  .photo { max-height:35vh; }
+  .photo img { object-fit:cover; width:100%; height:100%; }
+  .ceo-ph { width:clamp(80px,20vw,110px) !important; }
+  .map-wrap { aspect-ratio:4/3 !important; }
+  .quote-mark { font-size:clamp(60px,16vw,90px); }
+  table.spec { font-size:12px; }
+  table.spec th, table.spec td { padding:.5rem .4rem; }
+  .acc-head { font-size:clamp(13px,3.5vw,16px); }
+  .tab-btn { font-size:10px; padding:6px 10px; }
+  .nav-btn { width:32px; height:32px; font-size:16px; }
+  .stripes .stripe .num { font-size:clamp(18px,5vw,28px); }
 }
 @media (prefers-reduced-motion:reduce){
   .deck { transition:none; } .marquee-track { animation:none; } .pin { animation:none; }
@@ -1449,10 +1471,20 @@ function go(d){ cur=Math.min(TOTAL-1,Math.max(0,cur+d)); render(); }
   scrub.addEventListener('touchend',()=>{if(dragging)commit();});
 })();
 document.addEventListener('keydown',e=>{ if(e.key==='ArrowRight')go(1); if(e.key==='ArrowLeft')go(-1); });
-let tx=null;
-document.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
-document.addEventListener('touchend',e=>{ if(tx===null)return;
-  const dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)>55)go(dx<0?1:-1); tx=null; },{passive:true});
+let tx=null,ty=null,tLock=null;
+document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;tLock=null;},{passive:true});
+document.addEventListener('touchmove',e=>{
+  if(tx===null)return;
+  const dx=Math.abs(e.touches[0].clientX-tx), dy=Math.abs(e.touches[0].clientY-ty);
+  if(tLock===null) tLock=dx>dy?'h':'v';
+  if(tLock==='h') e.preventDefault();
+},{passive:false});
+document.addEventListener('touchend',e=>{
+  if(tx===null)return;
+  const dx=e.changedTouches[0].clientX-tx;
+  if(tLock==='h'&&Math.abs(dx)>40)go(dx<0?1:-1);
+  tx=null;ty=null;tLock=null;
+},{passive:true});
 
 /* counters + donuts */
 function cAnim(el,t,pre='',suf=''){ if(el.dataset.done)return; el.dataset.done='1';
