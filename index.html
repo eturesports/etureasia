@@ -220,7 +220,7 @@ ul.dash li b { font-weight:600; color:var(--w); }
 /* ---------- Map ---------- */
 .map-wrap { position:relative; width:100%; max-width:1020px; margin:0 auto; border-radius:12px; overflow:hidden;
   background:rgba(255,255,255,.03); border:1px solid var(--line-d); }
-.map-wrap img { width:100%; height:auto; display:block; opacity:.85; filter:grayscale(1) invert(1) brightness(1.1) contrast(.8); }
+.map-wrap img { width:100%; height:auto; display:block; filter:grayscale(1) brightness(0.4) contrast(2); }
 .pin { position:absolute; width:9px; height:9px; border-radius:50%; background:var(--red-l);
   transform:translate(-50%,-50%); cursor:pointer; animation:pulse 2.4s infinite; }
 .pin::after { content:attr(data-name); position:absolute; bottom:13px; left:50%; transform:translateX(-50%);
@@ -1107,25 +1107,25 @@ function gateCheck(){
     </div>
     <div class="map-wrap">
       <img src="assets/world_map.png" alt="World map, ETURE nationalities" loading="lazy">
-      <!-- pins: x=(lon+180)/360*1000  y=(90-lat)/180*500  viewBox 0 0 1000 500 -->
-      <svg style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="231" cy="144" r="5.5" fill="#C42B2B"><title>USA</title></circle>
-        <circle cx="490" cy="138" r="5.5" fill="#C42B2B"><title>Spain</title></circle>
-        <circle cx="292" cy="83" r="5.5" fill="#C42B2B"><title>Canada</title></circle>
-        <circle cx="294" cy="237" r="5.5" fill="#C42B2B"><title>Colombia</title></circle>
-        <circle cx="225" cy="196" r="5.5" fill="#C42B2B"><title>Mexico</title></circle>
-        <circle cx="274" cy="196" r="5.5" fill="#C42B2B"><title>Cayman Islands</title></circle>
-        <circle cx="524" cy="118" r="5.5" fill="#C42B2B"><title>Switzerland</title></circle>
-        <circle cx="507" cy="114" r="5.5" fill="#C42B2B"><title>France</title></circle>
-        <circle cx="888" cy="151" r="5.5" fill="#C42B2B"><title>Japan</title></circle>
-        <circle cx="314" cy="221" r="5.5" fill="#C42B2B"><title>Venezuela</title></circle>
-        <circle cx="278" cy="227" r="5.5" fill="#C42B2B"><title>Panama</title></circle>
-        <circle cx="306" cy="199" r="5.5" fill="#C42B2B"><title>R. Dominican</title></circle>
-        <circle cx="500" cy="107" r="5.5" fill="#C42B2B"><title>England</title></circle>
-        <circle cx="537" cy="104" r="5.5" fill="#C42B2B"><title>Germany</title></circle>
-        <circle cx="452" cy="209" r="5.5" fill="#C42B2B"><title>Senegal</title></circle>
-        <circle cx="499" cy="234" r="5.5" fill="#C42B2B"><title>Ghana</title></circle>
-        <circle cx="602" cy="254" r="5.5" fill="#C42B2B"><title>Kenya</title></circle>
+      <!-- pins: x=(lon+180)/360*1000  y=(90-lat)/180*556  viewBox 0 0 1000 556 -->
+      <svg style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;" viewBox="0 0 1000 556" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="231" cy="161" r="5.5" fill="#C42B2B"><title>USA</title></circle>
+        <circle cx="490" cy="153" r="5.5" fill="#C42B2B"><title>Spain</title></circle>
+        <circle cx="292" cy="93" r="5.5" fill="#C42B2B"><title>Canada</title></circle>
+        <circle cx="294" cy="264" r="5.5" fill="#C42B2B"><title>Colombia</title></circle>
+        <circle cx="225" cy="218" r="5.5" fill="#C42B2B"><title>Mexico</title></circle>
+        <circle cx="274" cy="218" r="5.5" fill="#C42B2B"><title>Cayman Islands</title></circle>
+        <circle cx="524" cy="132" r="5.5" fill="#C42B2B"><title>Switzerland</title></circle>
+        <circle cx="507" cy="127" r="5.5" fill="#C42B2B"><title>France</title></circle>
+        <circle cx="888" cy="168" r="5.5" fill="#C42B2B"><title>Japan</title></circle>
+        <circle cx="314" cy="246" r="5.5" fill="#C42B2B"><title>Venezuela</title></circle>
+        <circle cx="278" cy="252" r="5.5" fill="#C42B2B"><title>Panama</title></circle>
+        <circle cx="306" cy="221" r="5.5" fill="#C42B2B"><title>R. Dominican</title></circle>
+        <circle cx="500" cy="119" r="5.5" fill="#C42B2B"><title>England</title></circle>
+        <circle cx="537" cy="116" r="5.5" fill="#C42B2B"><title>Germany</title></circle>
+        <circle cx="452" cy="234" r="5.5" fill="#C42B2B"><title>Senegal</title></circle>
+        <circle cx="499" cy="261" r="5.5" fill="#C42B2B"><title>Ghana</title></circle>
+        <circle cx="602" cy="282" r="5.5" fill="#C42B2B"><title>Kenya</title></circle>
       </svg>
     </div>
     <div class="g3" style="margin-top:1rem;">
