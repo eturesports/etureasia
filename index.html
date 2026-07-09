@@ -1439,7 +1439,7 @@ const deck=document.getElementById('deck'), prevBtn=document.getElementById('pre
 
 function pad(n){ return n<10?'0'+n:''+n; }
 function render(){
-  deck.style.transform = `translateX(-${cur * window.innerWidth}px)`;
+  deck.style.transform = `translateX(-${cur * 100}%)`;
   const lt = LIGHT.includes(cur);
   prevBtn.classList.toggle('dkm',lt); nextBtn.classList.toggle('dkm',lt);
   document.querySelector('.hud').classList.toggle('lt',lt);
