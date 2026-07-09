@@ -1106,10 +1106,7 @@ function gateCheck(){
   </div>
 </section>
 <section class="slide " style="background:var(--dk);">
-  <div class="pad" style="display:flex;flex-direction:column;height:100%;padding-bottom:clamp(24px,3vh,40px);">
-    <p class="kick" style="margin-bottom:.5rem;">Nueva Residencia</p>
-    <h2 class="h-display" style="font-size:clamp(26px,3.8vw,54px);margin:0 0 1rem;">ETURE <span class="rd">Residence</span></h2>
-    <div id="nvResCarousel" style="border-radius:8px;overflow:hidden;position:relative;flex:1;min-height:0;">
+  <div id="nvResCarousel" style="position:absolute;inset:0;overflow:hidden;">
       <div id="nvResTrack" style="display:flex;height:100%;transition:transform .4s ease;">
         <img src="assets/res_01.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
         <img src="assets/res_02.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
@@ -1132,7 +1129,6 @@ function gateCheck(){
       <button onclick="nvResGo(1);event.stopPropagation()" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:#fff;border:0;border-radius:50%;width:36px;height:36px;font-size:22px;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center;line-height:1;">&#8250;</button>
       <div id="nvResDots" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:2;"></div>
     </div>
-  </div>
   <script>(()=>{
     let ri=0;const RT=16,track=document.getElementById('nvResTrack'),dots=document.getElementById('nvResDots');
     for(let i=0;i<RT;i++){const d=document.createElement('span');d.style.cssText='width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;display:inline-block;transition:background .2s;';d.onclick=(e)=>{e.stopPropagation();ri=i;upd();};dots.appendChild(d);}
