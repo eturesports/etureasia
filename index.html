@@ -220,7 +220,7 @@ ul.dash li b { font-weight:600; color:var(--w); }
 /* ---------- Map ---------- */
 .map-wrap { position:relative; width:100%; max-width:1020px; aspect-ratio:16/9; margin:0 auto; border-radius:12px; overflow:hidden;
   background:rgba(255,255,255,.03); border:1px solid var(--line-d); }
-.map-wrap img { width:100%; height:100%; object-fit:cover; object-position:center center; display:block; filter:grayscale(1) invert(1) brightness(1.15) contrast(1.2); }
+.map-wrap img { width:100%; height:100%; object-fit:cover; object-position:center center; display:block; filter:grayscale(1) blur(0.6px) invert(1) brightness(1.15) contrast(1.2); }
 .pin { position:absolute; width:9px; height:9px; border-radius:50%; background:var(--red-l);
   transform:translate(-50%,-50%); cursor:pointer; animation:pulse 2.4s infinite; }
 .pin::after { content:attr(data-name); position:absolute; bottom:13px; left:50%; transform:translateX(-50%);
