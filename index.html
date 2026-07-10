@@ -1120,6 +1120,7 @@ function gateCheck(){
     </div>
     <div id="resCarousel" style="border-radius:8px;overflow:hidden;position:relative;flex:1;min-height:0;">
       <div id="resTrack" style="display:flex;height:100%;transition:transform .4s ease;">
+        <img src="assets/res_09.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
         <img src="assets/res_01.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
         <img src="assets/res_02.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
         <img src="assets/res_03.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
@@ -1128,7 +1129,6 @@ function gateCheck(){
         <img src="assets/res_06.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
         <img src="assets/res_07.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
         <img src="assets/res_08.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
-        <img src="assets/res_09.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
         <img src="assets/res_10.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
         <img src="assets/res_11.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
         <img src="assets/res_12.jpg" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;">
@@ -1481,6 +1481,14 @@ function gateCheck(){
     <img src="assets/img_000.png" alt="ETURE Sports" style="height:clamp(22px,2.8vw,32px);width:auto;align-self:flex-start;margin-top:clamp(20px,3.5vh,36px);">
   </div>
 </section>
+<section class="slide " style="background:var(--dk);display:flex;align-items:center;justify-content:center;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, rgba(155,26,26,.28), transparent 65%);"></div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(20px,3vh,36px);padding:clamp(32px,5vw,80px);">
+    <img src="assets/img_000.png" alt="ETURE Sports" style="height:clamp(36px,5vw,64px);width:auto;opacity:.95;">
+    <h2 style="font-family:NeuePower,'Barlow Condensed';font-weight:900;font-size:clamp(52px,10vw,140px);line-height:.9;text-transform:uppercase;color:#fff;margin:0;">VAMOS <span style="color:var(--red-l);">TOROS</span></h2>
+    <a href="https://eturesports.com" target="_blank" style="display:inline-block;margin-top:.5rem;padding:clamp(12px,1.4vh,18px) clamp(28px,3.5vw,52px);background:var(--red-l);color:#fff;font-family:'Barlow Condensed';font-weight:700;font-size:clamp(13px,1.3vw,17px);letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border-radius:4px;transition:background .2s;" onmouseover="this.style.background='#9B1A1A'" onmouseout="this.style.background='#C42B2B'">eturesports.com</a>
+  </div>
+</section>
 
 </div>
 <button class="nav-btn" id="prevBtn" onclick="go(-1)" aria-label="Previous slide">&#8249;</button>
@@ -1513,7 +1521,7 @@ document.querySelectorAll('[data-img]').forEach(el=>{
     const ph=el.querySelector('.ph'); if(ph) ph.style.display='none'; }
 });
 
-const TOTAL = 38;
+const TOTAL = 39;
 const LIGHT = [1, 4, 6, 9, 15, 17, 19, 22, 24, 26, 29, 31, 34, 36];
 const NAMES = ["ETURE Asia", "Executive Overview", "The Premium Hub", "Person First, Athlete Second", "What Exactly Is ETURE?", "Track Record in Europe", "What Sets ETURE Apart", "Direct Student Benefits", "The Professional Pathway", "Age Categories & Programs", "Academic & Athletic Pathway", "College Placement Statistics", "Endless Possibilities", "Value for Institutional Partners", "3. Additional Information", "History & Track Record of ETURE", "Philosophy & Methodology", "Organization & Structure", "Academic Programs", "Program Duration & Languages", "Athletic Program & Planning", "Coaching, Care & Performance", "Facilities", "Financial Information — Pricing", "Included Services — All Inclusive", "Scholarships / Grants & Admission", "Agreements & Partnerships", "Results & Success Stories", "Player Testimonials", "A. Academic Pathways", "B. The Athletic Blueprint", "C. Financial Packages & Inclusions", "D. Scholarships and Financial Aid", "4. Key Success Metrics", "5. Marketing & Media Toolkit", "6. Closing the Deal", "7. Overcoming Objections", "8. Conclusion & Call to Action"];
 let cur = 0;
